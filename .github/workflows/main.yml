@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Compile Java class
-      run: javac PortScanner.java
+      run: javac -encoding utf-8 PortScanner.java
 
     - name: Run Java class
       run: java PortScanner
