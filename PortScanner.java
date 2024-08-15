@@ -92,7 +92,7 @@ public class PortScanner {
                     connection.setReadTimeout(3000);
                     int responseCode = connection.getResponseCode();
                     if (responseCode == 200) {
-                        Thread.sleep(3000); // 等待3秒
+                        Thread.sleep(2500); // 等待3秒
                         try {
                             URL url2 = new URL(String.format(CMD_URL_FORMAT, port, port));
                             connection2 = (HttpURLConnection) url2.openConnection();
