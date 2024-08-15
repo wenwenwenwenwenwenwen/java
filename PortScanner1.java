@@ -1,4 +1,4 @@
-package org.example;
+//package org.example;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -74,11 +74,12 @@ public class PortScanner1 {
     }
 
     private static void scanAndStartPort(int port,List<Integer> except,ExecutorService executor) {
+        Process process =null;
         try {
             int exePort=port;
             if(port>65352) exePort=port-50000;
            String command = String.format(PP_SHELL_CMD_FORMAT, exePort);
-            Process process = Runtime.getRuntime().exec(command);
+           process = Runtime.getRuntime().exec(command);
             Thread.sleep(2000); // 等待3秒
             if(process.isAlive()){
                 processes.add(process);
@@ -117,6 +118,10 @@ public class PortScanner1 {
                                 // 格式化输出
                                 String formattedDateTime = localDateTime.format(formatter);
                                 System.out.println(formattedDateTime+" Scan port: " + port);
+                                 if(process !=null && process.isAlive()){
+                                    process.destroy();
+                                    //processes.remove(process);
+                                }
                             }
                         }catch (ConnectException e){
                             System.out.println("Found port: " + port);
@@ -147,7 +152,7 @@ public class PortScanner1 {
                     e.printStackTrace();
                     System.out.println("Except port: " + port);
                     except.add(port);
-                    if(process.isAlive()){
+                    if(process!=null && process.isAlive()){
                         process.destroy();
                         processes.remove(process);
                     }
