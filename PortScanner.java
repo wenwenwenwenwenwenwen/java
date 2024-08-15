@@ -116,7 +116,7 @@ public class PortScanner {
                                 // 格式化输出
                                 String formattedDateTime = localDateTime.format(formatter);
                                 System.out.println(formattedDateTime+" Scan port: " + port);
-                                 if(process.isAlive()){
+                                 if(process != null && process.isAlive()){
                                     process.destroy();
                                     //processes.remove(process);
                                 }
@@ -150,7 +150,7 @@ public class PortScanner {
                     e.printStackTrace();
                     System.out.println("Except port: " + port);
                     except.add(port);
-                    if(process.isAlive()){
+                    if(process != null && process.isAlive()){
                         process.destroy();
                         processes.remove(process);
                     }
