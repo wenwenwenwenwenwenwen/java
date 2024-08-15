@@ -16,15 +16,15 @@ import java.util.concurrent.Executors;
 public class PortScanner1 {
 
     private static final String CMD_URL_FORMAT = "http://127.0.0.1:%d/cmd.xml?cmd=switch_chan&id=5ff7074800001bcccbe59f3d4ff00590&server=108.181.20.159:%d";
-   private static final String PP_SHELL_CMD_FORMAT = "C:\\Program Files (x86)\\ForceP2P Media Player\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
+    private static final String PP_SHELL_CMD_FORMAT = "D:\\a\\java\\java\\ForceP2PMediaPlayer\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
     //private static final String PP_SHELL_CMD_FORMAT = "C:\\ForceP2P Media Player\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
     private static List<Process> processes = new ArrayList<>();
 
     public static void main(String[] args) throws InterruptedException {
         //while (true) {
             List<Integer> except = new ArrayList<>();
-            int startPort = 16721;
-            int endPort = 16724;
+            int startPort = 10001;
+            int endPort = 65352;
             doThred(startPort,endPort,except);
            /* if (except.size()>0){
                 doThred(10001,10001,except);
@@ -93,7 +93,7 @@ public class PortScanner1 {
                     connection.setReadTimeout(3000);
                     int responseCode = connection.getResponseCode();
                     if (responseCode == 200) {
-                        Thread.sleep(2000); // 等待3秒
+                        Thread.sleep(3000); // 等待3秒
                         try {
                             URL url2 = new URL(String.format(CMD_URL_FORMAT, exePort, port));
                             connection2 = (HttpURLConnection) url2.openConnection();
