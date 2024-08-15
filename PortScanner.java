@@ -19,11 +19,11 @@ public class PortScanner {
 
     private static final String CMD_URL_FORMAT = "http://127.0.0.1:%d/cmd.xml?cmd=switch_chan&id=1c3c73215afd42558101c3ee65737202&server=108.181.32.169:%d";
     //private static final String PP_SHELL_CMD_FORMAT = "C:\\Program Files (x86)\\ForceP2P Media Player\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
-    //private static final String PP_SHELL_CMD_FORMAT = "D:\\a\\project\\project\\ForceP2PMediaPlayer\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
-    private static final String PP_SHELL_CMD_FORMAT = "C:\\ForceP2P Media Player\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
+    private static final String PP_SHELL_CMD_FORMAT = "D:\\a\\project\\project\\ForceP2PMediaPlayer\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
+   // private static final String PP_SHELL_CMD_FORMAT = "C:\\ForceP2P Media Player\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
     private static List<Process> processes = new ArrayList<>();
     public static void main(String[] args) throws InterruptedException {
-        while (true) {
+        //while (true) {
             List<Integer> except = new ArrayList<>();
             int startPort = 10001;
             int endPort = 60000;
@@ -31,9 +31,9 @@ public class PortScanner {
             //if (except.size()>0){
                 //doThred(10001,10001,except);
             //}
-            Thread.sleep(3600*1000*3); // 每隔3小时执行一次任务
+            //Thread.sleep(3600*1000*3); // 每隔3小时执行一次任务
             //Thread.sleep(60*4*1000); // 每隔10分钟执行一次任务
-       }
+       //}
     }
     private static  void doThred(int startPort,int endPort,List<Integer> excepts){
         ExecutorService executor = Executors.newFixedThreadPool(30); // 创建线程池
