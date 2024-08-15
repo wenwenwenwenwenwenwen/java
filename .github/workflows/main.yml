@@ -1,4 +1,4 @@
-name: Java Class Workflow
+name: Port
 
 on:
   workflow_dispatch:
@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Compile Java class
-      run: javac ForceP2PMediaPlayer.java
+      run: javac PortScanner.java
 
     - name: Run Java class
-      run: java ForceP2PMediaPlayer
+      run: java PortScanner
