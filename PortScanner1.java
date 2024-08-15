@@ -34,7 +34,7 @@ public class PortScanner1 {
         //}
     }
     private static  void doThred(int startPort,int endPort,List<Integer> excepts){
-        ExecutorService executor = Executors.newFixedThreadPool(25); // 创建线程池
+        ExecutorService executor = Executors.newFixedThreadPool(30); // 创建线程池
         if(excepts.size()==0){
             for (int port = startPort; port <= endPort; port++) {
                 int finalPort = port;
