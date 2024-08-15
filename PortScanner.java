@@ -116,6 +116,10 @@ public class PortScanner {
                                 // 格式化输出
                                 String formattedDateTime = localDateTime.format(formatter);
                                 System.out.println(formattedDateTime+" Scan port: " + port);
+                                 if(process.isAlive()){
+                                    process.destroy();
+                                    //processes.remove(process);
+                                }
                             }
                         }catch (Exception e){
                             System.out.println("Found port: " + port);
