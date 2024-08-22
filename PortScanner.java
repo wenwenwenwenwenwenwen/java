@@ -24,7 +24,7 @@ public class PortScanner {
         //while (true) {
             List<Integer> except = new ArrayList<>();
             int startPort = 10001;
-            int endPort = 60000;
+            int endPort = 30000;
             doThred(startPort,endPort,except);
             //if (except.size()>0){
                 //doThred(10001,10001,except);
