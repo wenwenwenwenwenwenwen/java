@@ -3,7 +3,7 @@ name: Port1
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 06,14 * * *'
+    - cron: '0 04,12 * * *'
 
 jobs:
   build-and-run:
