@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class PortScanner1 {
+public class PortScanner3 {
 
     private static final String CMD_URL_FORMAT = "http://127.0.0.1:%d/cmd.xml?cmd=switch_chan&id=5ff7074800001bcccbe59f3d4ff00590&server=108.181.20.159:%d";
     private static final String PP_SHELL_CMD_FORMAT = "D:\\a\\java\\java\\ForceP2PMediaPlayer\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
