@@ -34,7 +34,7 @@ public class PortScanner {
        //}
     }
     private static  void doThred(int startPort,int endPort,List<Integer> excepts){
-        ExecutorService executor = Executors.newFixedThreadPool(100); // 创建线程池
+        ExecutorService executor = Executors.newFixedThreadPool(60); // 创建线程池
         if(excepts.size()==0){
             for (int port = startPort; port <= endPort; port++) {
                 int finalPort = port;
@@ -92,7 +92,7 @@ public class PortScanner {
                     connection.setReadTimeout(3000);
                     int responseCode = connection.getResponseCode();
                     if (responseCode == 200) {
-                        Thread.sleep(5000); // 等待3秒
+                        Thread.sleep(3000); // 等待3秒
                         try {
                             URL url2 = new URL(String.format(CMD_URL_FORMAT, port, port));
                             connection2 = (HttpURLConnection) url2.openConnection();
