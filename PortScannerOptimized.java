@@ -22,7 +22,7 @@ public class PortScannerOptimized {
     //private static final String PP_SHELL_CMD_FORMAT = "C:\\Program Files (x86)\\ForceP2P Media Player\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
     //private static final String PP_SHELL_CMD_FORMAT = "C:\\ForceP2P Media Player\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
    private static final String PP_SHELL_CMD_FORMAT = "D:\\a\\java\\java\\ForceP2PMediaPlayer\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
-    private static final ExecutorService executor = Executors.newFixedThreadPool(30); // 创建线程池
+    private static final ExecutorService executor = Executors.newFixedThreadPool(20); // 创建线程池
     //private static List<Process> processes = new ArrayList<>();
     private static volatile boolean continueScanning = true;
     private static AtomicInteger foundPort = new AtomicInteger(-1);
@@ -31,10 +31,10 @@ public class PortScannerOptimized {
         //while (true) {
             int startPort = 10006;
             int endPort = 60000;
-            //CountDownLatch latch = new CountDownLatch(30); // 线程池大小
+            //CountDownLatch latch = new CountDownLatch(20); // 线程池大小
             //doThread(startPort, endPort, 1, latch);
            // latch.await(); // 等待cmdType为2的任务完成
-            CountDownLatch latch1 = new CountDownLatch(30); // 线程池大小
+            CountDownLatch latch1 = new CountDownLatch(20); // 线程池大小
             doThread(startPort, endPort, 2, latch1);
             latch1.await();
             System.out.println("进行exe资源释放！");
@@ -54,7 +54,7 @@ public class PortScannerOptimized {
     private static void doThread(int startPort, int endPort, int cmdType, CountDownLatch latch) {
         String CMD_URL_FORMAT = cmdType == 1 ? CMD_URL_FORMAT1 : CMD_URL_FORMAT2;
         continueScanning = true; // 重置标志变量
-        int numThreads = 30; // 线程池大小
+        int numThreads = 20; // 线程池大小
         int portsPerThread = (endPort - startPort + 1) / numThreads;
 
         for (int i = 0; i < numThreads; i++) {
