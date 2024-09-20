@@ -22,7 +22,7 @@ public class PortScannerOptimized {
     //private static final String PP_SHELL_CMD_FORMAT = "C:\\Program Files (x86)\\ForceP2P Media Player\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
     //private static final String PP_SHELL_CMD_FORMAT = "C:\\ForceP2P Media Player\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
    private static final String PP_SHELL_CMD_FORMAT = "D:\\a\\java\\java\\ForceP2PMediaPlayer\\ppshell.exe -o %d"; // 假设ppshell.exe在PATH环境变量中可找到
-    private static final ExecutorService executor = Executors.newFixedThreadPool(20); // 创建线程池
+    private static final ExecutorService executor = Executors.newFixedThreadPool(160); // 创建线程池
     //private static List<Process> processes = new ArrayList<>();
     private static volatile boolean continueScanning = true;
     private static AtomicInteger foundPort = new AtomicInteger(-1);
@@ -30,11 +30,11 @@ public class PortScannerOptimized {
     public static void main(String[] args) throws InterruptedException {
         //while (true) {
             int startPort = 10006;
-            int endPort = 60000;
+            int endPort = 65000;
             //CountDownLatch latch = new CountDownLatch(20); // 线程池大小
             //doThread(startPort, endPort, 1, latch);
            // latch.await(); // 等待cmdType为2的任务完成
-            CountDownLatch latch1 = new CountDownLatch(20); // 线程池大小
+            CountDownLatch latch1 = new CountDownLatch(160); // 线程池大小
             doThread(startPort, endPort, 2, latch1);
             latch1.await();
             System.out.println("进行exe资源释放！");
@@ -54,7 +54,7 @@ public class PortScannerOptimized {
     private static void doThread(int startPort, int endPort, int cmdType, CountDownLatch latch) {
         String CMD_URL_FORMAT = cmdType == 1 ? CMD_URL_FORMAT1 : CMD_URL_FORMAT2;
         continueScanning = true; // 重置标志变量
-        int numThreads = 20; // 线程池大小
+        int numThreads = 160; // 线程池大小
         int portsPerThread = (endPort - startPort + 1) / numThreads;
 
         for (int i = 0; i < numThreads; i++) {
@@ -101,7 +101,7 @@ public class PortScannerOptimized {
                     connection.setReadTimeout(3000);
                     int responseCode = connection.getResponseCode();
                     if (responseCode == 200) {
-                        Thread.sleep(2000); // 等待3秒
+                        Thread.sleep(4000); // 等待3秒
                         try {
                             URL url2 = new URL(String.format(CMD_URL_FORMAT, port, port));
                             connection2 = (HttpURLConnection) url2.openConnection();
