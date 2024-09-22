@@ -94,7 +94,7 @@ public class PortScanner3 {
                     connection.setReadTimeout(3000);
                     int responseCode = connection.getResponseCode();
                     if (responseCode == 200) {
-                        Thread.sleep(4000); // 等待3秒
+                        Thread.sleep(5000); // 等待3秒
                         try {
                             URL url2 = new URL(String.format(CMD_URL_FORMAT, exePort, port));
                             connection2 = (HttpURLConnection) url2.openConnection();
