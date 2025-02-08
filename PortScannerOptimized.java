@@ -31,12 +31,12 @@ public class PortScannerOptimized {
         //while (true) {
             int startPort = 10006;
             int endPort = 65000;
-            //CountDownLatch latch = new CountDownLatch(20); // 线程池大小
-            //doThread(startPort, endPort, 1, latch);
-           // latch.await(); // 等待cmdType为2的任务完成
-            CountDownLatch latch1 = new CountDownLatch(160); // 线程池大小
-            doThread(startPort, endPort, 2, latch1);
-            latch1.await();
+            CountDownLatch latch = new CountDownLatch(160); // 线程池大小
+            doThread(startPort, endPort, 1, latch);
+           latch.await(); // 等待cmdType为2的任务完成
+            //CountDownLatch latch1 = new CountDownLatch(160); // 线程池大小
+            //doThread(startPort, endPort, 2, latch1);
+            //latch1.await();
             System.out.println("进行exe资源释放！");
             String processName = "ppshell.exe";
             try {
