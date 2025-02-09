@@ -31,7 +31,7 @@ public class PortScannerOptimized {
         //while (true) {
             int startPort = 10006;
             int endPort = 65000;
-            CountDownLatch latch = new CountDownLatch(160); // 线程池大小
+            CountDownLatch latch = new CountDownLatch(100); // 线程池大小
             doThread(startPort, endPort, 1, latch);
            latch.await(); // 等待cmdType为2的任务完成
             //CountDownLatch latch1 = new CountDownLatch(160); // 线程池大小
