@@ -23,7 +23,7 @@ public class PortScanner1 {
     public static void main(String[] args) throws InterruptedException {
         //while (true) {
             List<Integer> except = new ArrayList<>();
-            int startPort = 30002;
+            int startPort = 10002;
             int endPort = 65352;
             doThred(startPort,endPort,except);
             //if (except.size()>0){
